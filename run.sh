@@ -1,1 +1,1 @@
-, uv run greeter.py
+python main.py

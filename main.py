@@ -1,15 +1,16 @@
-import gi
+import gi, sys
 gi.require_version("Gtk", "4.0")
 from gi.repository import Gtk
 from greeter import Greeter
 
-def main():
-    app = Gtk.Application(application_id='org.gtk.Example')
-    greeter_window = Greeter(app)
-    # app.connect('activate', greeter_window.run)
-    app.run(None)
-    print("Hello from ocf-greeter!")
+
+
+def main(app):
+    greeter_window = Greeter(application=app)
+    greeter_window.present()
 
 
 if __name__ == "__main__":
-    main()
+    app = Gtk.Application(application_id='org.gtk.Example')
+    app.connect('activate', main)
+    app.run(sys.argv)
